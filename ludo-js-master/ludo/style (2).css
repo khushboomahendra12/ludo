@@ -1,0 +1,225 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    background-image: url("https://www.wallpaperflare.com/static/902/866/448/blue-colorful-dark-simple-wallpaper.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed; /* Keeps the background fixed while scrolling */
+    height: 100vh;
+    margin: 0;
+    overflow: hidden; /* Prevents scrolling */
+}
+
+.ludo-container {
+    width: 90%; /* Set width to a percentage for responsiveness */
+    max-width: 450px; /* Maximum width for larger screens */
+    margin: 20px auto;
+    padding-top: 100px; /* Adjust padding for smaller screens */
+}
+
+/* Ludo board styles */
+.ludo-container .ludo {
+    height: auto; /* Allows height to adjust based on content */
+    width: 100%;
+    background-image: url('./ludo-bg.jpg');
+    background-size: cover;
+    position: relative;
+    aspect-ratio: 1; /* Ensures it's always a square */
+}
+
+/* Player pieces and base styles */
+.player-pieces {
+    height: 100%;
+    width: 100%;
+}
+
+.player-piece {
+    width: 3%;
+    height: 3%;
+    border: 2px solid;
+    border-radius: 10px;
+    position: absolute;
+    transform: translate(50%, 50%);
+    transition: all .2s;
+    z-index: 1;
+}
+
+.player-piece.highlight {
+    cursor: pointer;
+    border: 2px dashed;
+    animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+    0% {
+        transform: translate(50%, 50%) rotate(0deg);
+    }
+    50% {
+        transform: translate(50%, 50%) rotate(180deg) scale(1.4);
+    }
+    100% {
+        transform: translate(50%, 50%) rotate(360deg);
+    }
+}
+
+[player-id="P1"].player-piece {
+    background-color: #2eafff;
+}
+
+[player-id="P2"].player-piece {
+    background-color: #00b550;
+}
+
+.player-base {
+    width: 40%;
+    height: 40%;
+    border: 30px solid;
+    position: absolute;
+}
+
+.player-bases [player-id="P1"].player-base {
+    bottom: 0;
+    left: 0;
+    border-color: #1295e7;
+}
+
+.player-bases [player-id="P2"].player-base {
+    top: 0;
+    right: 0;
+    border-color: #049645;
+}
+
+.player-base.highlight {
+    animation: border-blink .7s infinite ease-in-out;
+}
+
+@keyframes border-blink {
+    50% {
+        border-color: rgba(255, 255, 255, 0.8);
+    }
+}
+
+/* Button styles */
+.btn {
+    padding: 8px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.btn:disabled {
+    opacity: 0.5;
+}
+
+.btn-dice {
+    background-color: white;
+    color: black;
+    font-size: 20px;
+    border-color: white;
+    width: 100px; /* Set the desired width */
+    height: 50px; /* Set the desired height */
+    padding: 10px 20px; /* Add padding for better spacing */
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.dice-value {
+    font-size: 40px;
+    font-weight: bold;
+    color: white;
+}
+
+.active-player {
+    color: white;
+    font-size: 30px;
+    text-align: center;
+}
+
+.dice-value img {
+    display: block;
+    margin: 0 auto;
+}
+
+.btn-dice, .btn-reset {
+    margin: 10px;
+}
+
+/* Media Queries for Responsiveness */
+
+/* Small Devices (Phones) */
+@media (max-width: 575.98px) {
+    .ludo-container {
+        padding-top: 50px; /* Reduce padding */
+        max-width: 300px; /* Smaller max width for mobile devices */
+    }
+
+    .dice-value {
+        font-size: 30px; /* Smaller font size for dice value */
+    }
+
+    .active-player {
+        font-size: 24px; /* Smaller font size for active player text */
+    }
+
+    .btn-dice {
+        width: 80px; /* Smaller button for mobile */
+        height: 40px;
+    }
+}
+
+/* Medium Devices (Tablets) */
+@media (min-width: 576px) and (max-width: 768px) {
+    .ludo-container {
+        max-width: 400px; /* Medium max width */
+    }
+
+    .dice-value {
+        font-size: 35px; /* Adjust font size */
+    }
+
+    .active-player {
+        font-size: 28px;
+    }
+}
+
+/* Larger Devices (Desktops) */
+@media (min-width: 768px) and (max-width: 1200px) {
+    .ludo-container {
+        max-width: 450px; /* Default size for larger screens */
+    }
+
+    .dice-value {
+        font-size: 40px; /* Larger font size */
+    }
+
+    .active-player {
+        font-size: 30px;
+    }
+}
+
+/* Specific Media Query for 1024x600 resolution */
+@media (max-width: 1024px) and (max-height: 600px) {
+    .ludo-container {
+        padding-top: 50px; /* Reduce padding for this screen size */
+        max-width: 400px; /* Slightly reduce max width */
+    }
+
+    .dice-value {
+        font-size: 35px; /* Adjust font size for better readability */
+    }
+
+    .active-player {
+        font-size: 28px; /* Adjust text size */
+    }
+
+    .btn-dice {
+        width: 90px; /* Adjust button size for this screen */
+        height: 45px;
+    }
+}

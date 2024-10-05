@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lu</title>
+    <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="App">L-U-D-O</h1>
+        <p class="bold">Welcome to your PLAY-LUDO App!</p>
+    </div>
+    <div class="intro">
+        <a href="index.html"><button id="start" onclick="sound()" type="button"><b>Start</b></button></a>
+    </div>
+
+    <!-- Audio Element -->
+   <audio id="click-sound" src="unlock.wav"></audio>
+
+    <script>
+        document.getElementById('start').addEventListener('click',function(event){
+            event.preventDefault();
+            var audio = document.getElementById('click-sound');
+            audio.play();
+            setTimeout(function(){
+                window.location.href = 'index.html';
+            },1000);
+
+        })
+    
+    </script>
+</body>
+</html>
